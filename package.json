@@ -1,0 +1,14 @@
+{
+  "name": "basic-informational-site",
+  "module": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "bun run --watch index.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
