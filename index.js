@@ -1,45 +1,41 @@
-import { serve } from "bun";
+import express from 'express';
 
-serve({
-  port: 8080,
-  static: {
-    "/": new Response(await Bun.file("pages/index.html").bytes(), {
-      headers: {
-        "Content-Type": "text/html",
-      },
-    }),
-    "/about.html": new Response(await Bun.file("pages/about.html").bytes(), {
-      headers: {
-        "Content-Type": "text/html",
-      },
-    }),
-    "/contact-me.html": new Response(await Bun.file("pages/contact-me.html").bytes(), {
-      headers: {
-        "Content-Type": "text/html",
-      },
-    }),
-    "/assets/icons/github.svg": new Response(await Bun.file("assets/icons/github.svg").bytes(), {
-      headers: {
-        "Content-Type": "image/svg+xml",
-      },
-    }),
-    "/assets/images/scrambled_eggs.jpg": new Response(await Bun.file("assets/images/scrambled_eggs.jpg").bytes(), {
-      headers: {
-        "Content-Type": "image/jpeg",
-      },
-    }),
-    "/styles.css": new Response(await Bun.file("styles.css").bytes(), {
-      headers: {
-        "Content-Type": "text/css",
-      },
-    }),
-  },
+const app = express();
+const port = 8080;
+const options = {
+  root: import.meta.dir,
+}
 
-  async fetch(req) {
-    return new Response(await Bun.file("pages/404.html").bytes(), {
-      headers: {
-        "Content-Type": "text/html",
-      },
-    })
-  },
+app.use(express.static('.'));
+
+app.get('/', (req, res) => {
+  res.sendFile('pages/index.html', options);
+});
+
+app.get('/about.html', (req, res) => {
+  res.sendFile('pages/about.html', options);
+});
+
+app.get('/contact-me.html', (req, res) => {
+  res.sendFile('pages/contact-me.html', options);
+});
+
+app.get('/assets/icons/github.svg', (req, res) => {
+  res.sendFile('assets/icons/github.svg', options);
+});
+
+app.get('/assets/images/scrambled_eggs.jpg', (req, res) => {
+  res.sendFile('assets/images/scrambled_eggs.jpg', options);
+});
+
+app.get('/styles.css', (req, res) => {
+  res.sendFile('styles.css', options);
+});
+
+app.use((req, res) => {
+  res.status(404).sendFile('pages/404.html', options);
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });

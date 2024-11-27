@@ -6,7 +6,8 @@
     "start": "bun run --watch index.js"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "express": "^4.21.1"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
