@@ -6,7 +6,7 @@ const options = {
   root: import.meta.dir,
 }
 
-app.use(express.static('.'));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.sendFile('pages/index.html', options);
@@ -20,15 +20,15 @@ app.get('/contact-me.html', (req, res) => {
   res.sendFile('pages/contact-me.html', options);
 });
 
-app.get('/assets/icons/github.svg', (req, res) => {
-  res.sendFile('assets/icons/github.svg', options);
+app.get('github.svg', (req, res) => {
+  res.sendFile('github.svg', options);
 });
 
-app.get('/assets/images/scrambled_eggs.jpg', (req, res) => {
-  res.sendFile('assets/images/scrambled_eggs.jpg', options);
+app.get('scrambled_eggs.jpg', (req, res) => {
+  res.sendFile('scrambled_eggs.jpg', options);
 });
 
-app.get('/styles.css', (req, res) => {
+app.get('styles.css', (req, res) => {
   res.sendFile('styles.css', options);
 });
 

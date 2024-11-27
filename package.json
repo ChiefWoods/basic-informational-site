@@ -1,6 +1,6 @@
 {
   "name": "basic-informational-site",
-  "module": "index.js",
+  "module": "app.js",
   "devDependencies": {
     "@types/bun": "latest",
     "express": "^4.21.1"
