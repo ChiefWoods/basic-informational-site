@@ -6,7 +6,7 @@
     "express": "^4.21.1"
   },
   "scripts": {
-    "start": "bun run --watch index.js"
+    "start": "bun --watch app.js"
   },
   "type": "module"
 }
